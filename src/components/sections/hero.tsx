@@ -102,9 +102,9 @@ export function Hero() {
             Get Started
             <ArrowUpRight className="h-4 w-4" />
           </MagneticButton>
-          <MagneticButton href="#portfolio" variant="outline">
+          <MagneticButton href="#why-us" variant="outline">
             <PlayCircle className="h-4 w-4" />
-            View Portfolio
+            Why Rise
           </MagneticButton>
         </motion.div>
 

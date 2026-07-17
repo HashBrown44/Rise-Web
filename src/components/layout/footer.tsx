@@ -1,17 +1,15 @@
+import Image from "next/image";
 import { Globe, Mail, MessageCircle } from "lucide-react";
 import { NAV_LINKS, SITE } from "@/lib/data/site";
-import { SERVICES } from "@/lib/data/services";
 
 export function Footer() {
   return (
     <footer className="relative border-t border-white/5 bg-surface/40 px-4 pb-10 pt-16 sm:px-8">
       <div className="mx-auto flex max-w-6xl flex-col gap-12">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-5">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-4">
           <div className="flex flex-col gap-4 sm:col-span-2">
             <a href="#top" className="flex w-fit items-center gap-2 font-[family-name:var(--font-heading)] text-xl font-semibold">
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-secondary text-sm font-bold text-background">
-                R
-              </span>
+              <Image src="/rise-logo-mark.png" alt="" width={700} height={435} className="h-8 w-auto" />
               {SITE.name}
             </a>
             <p className="max-w-sm text-sm leading-relaxed text-muted">
@@ -34,15 +32,6 @@ export function Footer() {
                 </a>
               ))}
             </div>
-          </div>
-
-          <div className="flex flex-col gap-4">
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-foreground">Services</h4>
-            {SERVICES.map((service) => (
-              <a key={service.title} href="#services" className="text-sm text-muted transition-colors hover:text-primary">
-                {service.title}
-              </a>
-            ))}
           </div>
 
           <div className="flex flex-col gap-4">

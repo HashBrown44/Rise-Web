@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { NAV_LINKS, SITE } from "@/lib/data/site";
@@ -36,9 +37,7 @@ export function Navbar() {
         )}
       >
         <a href="#top" data-cursor-hover className="flex items-center gap-2 font-[family-name:var(--font-heading)] text-lg font-semibold">
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-secondary text-sm font-bold text-background">
-            R
-          </span>
+          <Image src="/rise-logo-mark.png" alt="" width={700} height={435} priority className="h-8 w-auto" />
           {SITE.shortName}
           <span className="text-primary">.</span>
         </a>
