@@ -1,14 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { Check, CreditCard, Loader2, Wallet } from "lucide-react";
+import { Check, CreditCard } from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 import { CheckoutModal } from "@/components/checkout/checkout-modal";
 import { PRICING_PLANS } from "@/lib/data/pricing";
-import { startPaypalCheckout, type CheckoutProvider } from "@/lib/payments";
 import { cn } from "@/lib/utils";
 
 export function Pricing() {
@@ -38,21 +36,7 @@ export function Pricing() {
 }
 
 function PricingCard({ plan }: { plan: (typeof PRICING_PLANS)[number] }) {
-  const [status, setStatus] = useState<"idle" | CheckoutProvider>("idle");
-  const [notice, setNotice] = useState<string | null>(null);
   const [checkoutOpen, setCheckoutOpen] = useState(false);
-
-  const handlePaypalCheckout = async () => {
-    setStatus("paypal");
-    setNotice(null);
-    try {
-      await startPaypalCheckout(plan.id);
-    } catch {
-      setNotice("PayPal checkout is launching soon — use the form below to reserve your project today.");
-    } finally {
-      setStatus("idle");
-    }
-  };
 
   return (
     <div
@@ -101,35 +85,14 @@ function PricingCard({ plan }: { plan: (typeof PRICING_PLANS)[number] }) {
           {plan.cta}
         </MagneticButton>
 
-        <div className="grid grid-cols-2 gap-3">
-          <button
-            onClick={() => setCheckoutOpen(true)}
-            data-cursor-hover
-            className="flex items-center justify-center gap-2 rounded-full border border-white/10 px-4 py-3 text-xs font-semibold text-muted transition-colors hover:border-primary/40 hover:text-foreground disabled:opacity-60"
-          >
-            <CreditCard className="h-3.5 w-3.5" />
-            {plan.id === "full-ownership" ? "Pay with Stripe" : "Subscribe with Stripe"}
-          </button>
-          <button
-            onClick={handlePaypalCheckout}
-            disabled={status !== "idle"}
-            data-cursor-hover
-            className="flex items-center justify-center gap-2 rounded-full border border-white/10 px-4 py-3 text-xs font-semibold text-muted transition-colors hover:border-primary/40 hover:text-foreground disabled:opacity-60"
-          >
-            {status === "paypal" ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Wallet className="h-3.5 w-3.5" />}
-            {plan.id === "full-ownership" ? "Pay with PayPal" : "Subscribe with PayPal"}
-          </button>
-        </div>
-
-        {notice && (
-          <motion.p
-            initial={{ opacity: 0, y: -6 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="rounded-xl bg-white/5 px-4 py-3 text-xs leading-relaxed text-highlight"
-          >
-            {notice}
-          </motion.p>
-        )}
+        <button
+          onClick={() => setCheckoutOpen(true)}
+          data-cursor-hover
+          className="flex items-center justify-center gap-2 rounded-full border border-white/10 px-4 py-3 text-xs font-semibold text-muted transition-colors hover:border-primary/40 hover:text-foreground"
+        >
+          <CreditCard className="h-3.5 w-3.5" />
+          Subscribe
+        </button>
       </div>
 
       <CheckoutModal

@@ -10,11 +10,7 @@ import { cn } from "@/lib/utils";
 
 const HEADLINE_LINES = ["Websites Built To", "Grow Your Business."];
 
-const TRUST_ITEMS = [
-  { icon: Star, label: "4.9/5 average client rating" },
-  { icon: ShieldCheck, label: "Full ownership, always" },
-  { icon: Sparkles, label: "50+ local businesses launched" },
-];
+const TRUST_ITEMS = [{ icon: ShieldCheck, label: "Full ownership, always" }];
 
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);

@@ -23,10 +23,21 @@ export const leadFormSchema = z.object({
 
 export type LeadFormValues = z.infer<typeof leadFormSchema>;
 
+export const billingDetailsSchema = z.object({
+  name: z.string().trim().min(2, "Enter your full name"),
+  email: z.string().trim().email("Enter a valid email address"),
+  addressLine1: z.string().trim().min(3, "Enter your street address"),
+  city: z.string().trim().min(1, "Enter your city"),
+  state: z.string().trim().min(2, "Enter your state"),
+  postalCode: z.string().trim().min(3, "Enter your ZIP code"),
+});
+
+export type BillingDetailsValues = z.infer<typeof billingDetailsSchema>;
+
 export const checkoutRequestSchema = z.object({
   plan: z.enum(["full-ownership", "growth-plan"]),
-  email: z.string().trim().email().optional(),
-  name: z.string().trim().min(1).optional(),
+  method: z.enum(["card", "paypal", "venmo"]),
+  billing: billingDetailsSchema,
 });
 
 export type CheckoutRequestValues = z.infer<typeof checkoutRequestSchema>;

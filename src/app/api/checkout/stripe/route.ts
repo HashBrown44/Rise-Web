@@ -2,6 +2,7 @@ import type Stripe from "stripe";
 import { NextResponse } from "next/server";
 import { getStripe } from "@/lib/stripe";
 import { checkoutRequestSchema } from "@/lib/schemas";
+import { PAYMENT_METHODS } from "@/lib/data/payment-methods";
 
 const AMOUNTS = {
   "full-ownership": 59900, // $599.00 one-time
@@ -34,7 +35,18 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, errors: result.error.flatten().fieldErrors }, { status: 400 });
   }
 
-  const { plan, email, name } = result.data;
+  const { plan, method, billing } = result.data;
+
+  const methodOption = PAYMENT_METHODS.find((m) => m.id === method);
+  if (!methodOption) {
+    return NextResponse.json({ ok: false, error: "Unsupported payment method." }, { status: 400 });
+  }
+  if (plan === "growth-plan" && !methodOption.subscriptionSupported) {
+    return NextResponse.json(
+      { ok: false, error: `${methodOption.label} isn't available for subscription plans. Choose Card or PayPal.` },
+      { status: 400 },
+    );
+  }
 
   let stripe;
   try {
@@ -46,14 +58,23 @@ export async function POST(request: Request) {
     );
   }
 
+  const address = {
+    line1: billing.addressLine1,
+    city: billing.city,
+    state: billing.state,
+    postal_code: billing.postalCode,
+    country: "US",
+  };
+
   try {
     if (plan === "full-ownership") {
       const paymentIntent = await stripe.paymentIntents.create({
         amount: AMOUNTS["full-ownership"],
         currency: "usd",
-        receipt_email: email,
-        automatic_payment_methods: { enabled: true },
-        metadata: { plan, customerName: name ?? "" },
+        receipt_email: billing.email,
+        payment_method_types: [methodOption.stripeType],
+        shipping: { name: billing.name, address },
+        metadata: { plan, customerName: billing.name },
       });
 
       return NextResponse.json({ ok: true, clientSecret: paymentIntent.client_secret });
@@ -64,7 +85,11 @@ export async function POST(request: Request) {
       getOrCreateProduct(stripe, "monthly"),
     ]);
 
-    const customer = await stripe.customers.create({ email, name });
+    const customer = await stripe.customers.create({
+      email: billing.email,
+      name: billing.name,
+      address,
+    });
 
     const subscription = await stripe.subscriptions.create({
       customer: customer.id,
@@ -88,7 +113,10 @@ export async function POST(request: Request) {
         },
       ],
       payment_behavior: "default_incomplete",
-      payment_settings: { save_default_payment_method: "on_subscription" },
+      payment_settings: {
+        save_default_payment_method: "on_subscription",
+        payment_method_types: [methodOption.stripeType as Stripe.SubscriptionCreateParams.PaymentSettings.PaymentMethodType],
+      },
       expand: ["latest_invoice.confirmation_secret"],
       metadata: { plan },
     });
