@@ -15,7 +15,7 @@ export const PRICING_PLANS: PricingPlan[] = [
   {
     id: "full-ownership",
     name: "Full Ownership",
-    price: "$599",
+    price: "$799",
     priceSuffix: "one-time",
     description: "Pay once, own it forever. Perfect for businesses that want a great site with zero ongoing fees.",
     features: [
@@ -31,7 +31,7 @@ export const PRICING_PLANS: PricingPlan[] = [
   {
     id: "growth-plan",
     name: "Growth Plan",
-    price: "$400 + $50",
+    price: "$399 + $99.99",
     priceSuffix: "one-time + /month",
     description: "For businesses that want their site actively maintained, updated, and improved every month.",
     features: [

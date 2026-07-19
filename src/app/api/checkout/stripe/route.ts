@@ -5,9 +5,9 @@ import { checkoutRequestSchema } from "@/lib/schemas";
 import { PAYMENT_METHODS } from "@/lib/data/payment-methods";
 
 const AMOUNTS = {
-  "full-ownership": 59900, // $599.00 one-time
-  "growth-setup": 40000, // $400.00 one-time
-  "growth-monthly": 5000, // $50.00 / month
+  "full-ownership": 79900, // $799.00 one-time
+  "growth-setup": 39900, // $399.00 one-time
+  "growth-monthly": 9999, // $99.99 / month
 } as const;
 
 let growthSetupProductId: string | null = null;
