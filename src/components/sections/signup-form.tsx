@@ -14,7 +14,7 @@ import { leadFormSchema, type LeadFormValues } from "@/lib/schemas";
 import { cn } from "@/lib/utils";
 
 const PACKAGE_OPTIONS: { value: LeadFormValues["package"]; label: string }[] = [
-  { value: "full-ownership", label: "Full Ownership — $1" },
+  { value: "full-ownership", label: "Full Ownership — $799" },
   { value: "growth-plan", label: "Growth Plan — $399 + $49.99/mo" },
   { value: "not-sure", label: "Not Sure Yet" },
 ];
