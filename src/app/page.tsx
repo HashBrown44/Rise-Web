@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { Hero } from "@/components/sections/hero";
+import { WebsiteZoomReveal } from "@/components/sections/website-zoom-reveal";
 import { WhyChooseUs } from "@/components/sections/why-choose-us";
 import { AboutUs } from "@/components/sections/about-us";
 import { Pricing } from "@/components/sections/pricing";
@@ -15,6 +16,7 @@ export default function Home() {
       <Navbar />
       <main className="flex flex-1 flex-col">
         <Hero />
+        <WebsiteZoomReveal />
         <WhyChooseUs />
         <AboutUs />
         <Pricing />

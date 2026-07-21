@@ -77,14 +77,13 @@ export function CheckoutModal({ open, onClose, plan, planLabel, amountLabel }: C
     setReady(false);
   };
 
-  const handleBillingSubmit = (values: BillingDetailsValues) => {
-    setBilling(values);
-    setFetchError(null);
-    setStep("method");
-  };
+  const availableMethods = PAYMENT_METHODS.filter(
+    (m) => plan !== "growth-plan" || m.subscriptionSupported,
+  );
 
-  const handleSelectMethod = async (methodId: PaymentMethodId) => {
-    if (!billing || submittingMethod) return;
+  const handleSelectMethod = async (methodId: PaymentMethodId, billingOverride?: BillingDetailsValues) => {
+    const billingValues = billingOverride ?? billing;
+    if (!billingValues || submittingMethod) return;
     setSelectedMethod(methodId);
     setSubmittingMethod(methodId);
     setFetchError(null);
@@ -92,7 +91,7 @@ export function CheckoutModal({ open, onClose, plan, planLabel, amountLabel }: C
       const res = await fetch("/api/checkout/stripe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ plan, method: methodId, billing }),
+        body: JSON.stringify({ plan, method: methodId, billing: billingValues }),
       });
       const data = await res.json();
       if (!res.ok || !data.ok) {
@@ -107,9 +106,16 @@ export function CheckoutModal({ open, onClose, plan, planLabel, amountLabel }: C
     }
   };
 
-  const availableMethods = PAYMENT_METHODS.filter(
-    (m) => plan !== "growth-plan" || m.subscriptionSupported,
-  );
+  const handleBillingSubmit = (values: BillingDetailsValues) => {
+    setBilling(values);
+    setFetchError(null);
+    // Skip the method picker entirely when there's only one option to pick.
+    if (availableMethods.length === 1) {
+      handleSelectMethod(availableMethods[0].id, values);
+    } else {
+      setStep("method");
+    }
+  };
 
   return (
     <AnimatePresence>
@@ -143,7 +149,7 @@ export function CheckoutModal({ open, onClose, plan, planLabel, amountLabel }: C
                 <button
                   onClick={() => {
                     setFetchError(null);
-                    setStep(step === "payment" ? "method" : "billing");
+                    setStep(step === "payment" && availableMethods.length > 1 ? "method" : "billing");
                   }}
                   aria-label="Go back"
                   data-cursor-hover

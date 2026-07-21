@@ -1,20 +1,49 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Check, CreditCard } from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 import { CheckoutModal } from "@/components/checkout/checkout-modal";
+import { PricingParallaxBg } from "@/components/sections/pricing-parallax-bg";
 import { PRICING_PLANS } from "@/lib/data/pricing";
 import { cn } from "@/lib/utils";
 
 export function Pricing() {
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) return;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        gridRef.current,
+        { scale: 0.94 },
+        {
+          scale: 1.02,
+          ease: "none",
+          scrollTrigger: {
+            trigger: gridRef.current,
+            start: "top 85%",
+            end: "top 35%",
+            scrub: 0.8,
+          },
+        },
+      );
+    }, gridRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section id="pricing" className="relative isolate px-4 py-28 sm:px-8">
-      <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-full">
-        <div className="absolute left-1/2 top-1/3 h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-primary/10 blur-[160px]" />
-      </div>
+      <PricingParallaxBg />
 
       <div className="mx-auto flex max-w-6xl flex-col gap-16">
         <SectionHeading
@@ -23,7 +52,7 @@ export function Pricing() {
           description="Choose the path that fits your business — a one-time build, or an ongoing growth partnership."
         />
 
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+        <div ref={gridRef} className="grid grid-cols-1 gap-8 lg:grid-cols-2">
           {PRICING_PLANS.map((plan, index) => (
             <Reveal key={plan.id} delay={index * 0.1}>
               <PricingCard plan={plan} />
