@@ -15,6 +15,7 @@ export function Footer() {
             <p className="max-w-sm text-sm leading-relaxed text-muted">
               We design and build high-converting websites for local businesses ready to grow. Premium design, real ownership, no surprises.
             </p>
+            <p className="text-sm text-muted">Founded by Trevyn Desmond &amp; Walter Bansley.</p>
             <div className="flex gap-3 pt-2">
               {[
                 { icon: Mail, label: "Email us" },
@@ -35,7 +36,7 @@ export function Footer() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-foreground">Navigate</h4>
+            <h4 className="label-mono text-xs font-semibold text-foreground">Site</h4>
             {NAV_LINKS.map((link) => (
               <a key={link.href} href={link.href} className="text-sm text-muted transition-colors hover:text-primary">
                 {link.label}
@@ -44,7 +45,7 @@ export function Footer() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-foreground">Contact</h4>
+            <h4 className="label-mono text-xs font-semibold text-foreground">Contact</h4>
             <a href={`mailto:${SITE.email}`} className="text-sm text-muted transition-colors hover:text-primary">
               {SITE.email}
             </a>
@@ -54,12 +55,8 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 text-xs text-muted sm:flex-row">
+        <div className="flex flex-col items-center justify-between gap-2 border-t border-white/5 pt-8 text-xs text-muted sm:flex-row">
           <p>&copy; {new Date().getFullYear()} {SITE.name}. All rights reserved.</p>
-          <div className="flex gap-6">
-            <a href="#" className="transition-colors hover:text-primary">Privacy Policy</a>
-            <a href="#" className="transition-colors hover:text-primary">Terms of Service</a>
-          </div>
         </div>
       </div>
     </footer>

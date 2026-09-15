@@ -57,7 +57,7 @@ export function CustomCursor() {
           width: isPointer ? 64 : 36,
           height: isPointer ? 64 : 36,
           opacity: isPointer ? 0.9 : 0.5,
-          backgroundColor: isPointer ? "rgba(0,229,255,0.08)" : "rgba(0,229,255,0)",
+          backgroundColor: isPointer ? "rgba(47,93,255,0.08)" : "rgba(47,93,255,0)",
         }}
         transition={{ duration: 0.25, ease: "easeOut" }}
         style={{

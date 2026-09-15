@@ -23,10 +23,10 @@ import { cn } from "@/lib/utils";
 const APPEARANCE: StripeElementsOptions["appearance"] = {
   theme: "night",
   variables: {
-    colorPrimary: "#00e5ff",
-    colorBackground: "#0b1220",
-    colorText: "#ffffff",
-    colorTextSecondary: "#94a3b8",
+    colorPrimary: "#2f5dff",
+    colorBackground: "#131417",
+    colorText: "#f2efe9",
+    colorTextSecondary: "#938f87",
     colorDanger: "#f87171",
     fontFamily: "var(--font-inter), ui-sans-serif, system-ui, sans-serif",
     borderRadius: "12px",
@@ -34,15 +34,15 @@ const APPEARANCE: StripeElementsOptions["appearance"] = {
   },
   rules: {
     ".Input": {
-      border: "1px solid rgba(148, 163, 184, 0.18)",
+      border: "1px solid rgba(242, 239, 233, 0.1)",
       backgroundColor: "rgba(255, 255, 255, 0.03)",
     },
     ".Input:focus": {
-      border: "1px solid rgba(0, 229, 255, 0.6)",
-      boxShadow: "0 0 0 1px rgba(0, 229, 255, 0.3)",
+      border: "1px solid rgba(47, 93, 255, 0.6)",
+      boxShadow: "0 0 0 1px rgba(47, 93, 255, 0.3)",
     },
     ".Label": {
-      color: "#94a3b8",
+      color: "#938f87",
     },
   },
 };
@@ -159,7 +159,7 @@ export function CheckoutModal({ open, onClose, plan, planLabel, amountLabel }: C
                 </button>
               )}
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-highlight">{planLabel}</p>
+                <p className="label-mono text-xs font-semibold text-highlight">{planLabel}</p>
                 <h3 className="mt-2 font-[family-name:var(--font-heading)] text-2xl font-semibold">{amountLabel}</h3>
               </div>
             </div>

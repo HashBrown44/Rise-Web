@@ -25,6 +25,27 @@ export function Reveal({ children, className, delay = 0, y = 32, once = true }: 
   );
 }
 
+type WipeRevealProps = {
+  children: ReactNode;
+  className?: string;
+  delay?: number;
+  once?: boolean;
+};
+
+export function WipeReveal({ children, className, delay = 0, once = true }: WipeRevealProps) {
+  return (
+    <motion.div
+      className={className}
+      initial={{ clipPath: "inset(0 0 100% 0)" }}
+      whileInView={{ clipPath: "inset(0 0 0% 0)" }}
+      viewport={{ once, margin: "-80px" }}
+      transition={{ duration: 0.9, delay, ease: [0.16, 1, 0.3, 1] }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
 export const staggerContainer: Variants = {
   hidden: {},
   show: {

@@ -87,7 +87,7 @@ export const FormField = forwardRef<HTMLInputElement | HTMLTextAreaElement, Inpu
             initial={false}
             animate={{ opacity: focused ? 1 : 0, scale: focused ? 1 : 0.98 }}
             transition={{ duration: 0.25 }}
-            className="pointer-events-none absolute inset-0 -z-10 rounded-xl shadow-[0_0_0_3px_rgba(0,229,255,0.12)]"
+            className="pointer-events-none absolute inset-0 -z-10 rounded-xl shadow-[0_0_0_3px_rgba(47,93,255,0.12)]"
           />
         </div>
 

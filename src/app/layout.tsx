@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter } from "next/font/google";
+import { Fraunces, Inter, IBM_Plex_Mono } from "next/font/google";
 import { CustomCursor } from "@/components/ui/cursor";
 import { LoadingScreen } from "@/components/ui/loading-screen";
+import { FloatingWidget } from "@/components/ui/floating-widget";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
@@ -17,8 +18,15 @@ const inter = Inter({
   display: "swap",
 });
 
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  display: "swap",
+});
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://risewebsites.com"),
+  metadataBase: new URL("https://risewebsite.com"),
   title: {
     default: "Rise Websites — Websites Built To Grow Your Business",
     template: "%s | Rise Websites",
@@ -48,12 +56,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${inter.variable} h-full antialiased`}
+      className={`${fraunces.variable} ${inter.variable} ${plexMono.variable} h-full antialiased`}
     >
       <body className="grain min-h-full flex flex-col bg-background text-foreground selection:bg-primary">
         <LoadingScreen />
         <CustomCursor />
         {children}
+        <FloatingWidget />
       </body>
     </html>
   );

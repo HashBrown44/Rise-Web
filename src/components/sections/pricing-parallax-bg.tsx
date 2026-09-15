@@ -54,15 +54,15 @@ export function PricingParallaxBg() {
     <div ref={containerRef} className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-full overflow-hidden">
       <div
         ref={orbARef}
-        className="absolute left-1/2 top-1/3 h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-primary/10 blur-[160px] will-change-transform"
+        className="absolute left-1/2 top-1/3 h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-[color:var(--nebula-blue)]/[0.12] blur-[160px] will-change-transform"
       />
       <div
         ref={orbBRef}
-        className="absolute right-[10%] top-1/4 h-[380px] w-[600px] rounded-full bg-secondary/15 blur-[140px] will-change-transform"
+        className="absolute right-[10%] top-1/4 h-[380px] w-[600px] rounded-full bg-[color:var(--nebula-violet)]/[0.16] blur-[140px] will-change-transform"
       />
       <div
         ref={orbCRef}
-        className="absolute left-[8%] bottom-[10%] h-[340px] w-[560px] rounded-full bg-highlight/10 blur-[130px] will-change-transform"
+        className="absolute left-[8%] bottom-[10%] h-[340px] w-[560px] rounded-full bg-[color:var(--nebula-magenta)]/[0.12] blur-[130px] will-change-transform"
       />
     </div>
   );

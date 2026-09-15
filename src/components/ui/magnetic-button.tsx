@@ -39,7 +39,7 @@ export function MagneticButton({
 
   const styles = {
     primary:
-      "bg-gradient-to-r from-primary to-highlight text-background shadow-[0_0_30px_-5px_rgba(0,229,255,0.6)] hover:shadow-[0_0_45px_-5px_rgba(0,229,255,0.85)]",
+      "bg-gradient-to-r from-primary to-secondary text-foreground shadow-[0_0_30px_-5px_rgba(47,93,255,0.6)] hover:shadow-[0_0_45px_-5px_rgba(47,93,255,0.85)]",
     outline: "border border-white/15 text-foreground hover:border-primary/60 hover:bg-white/5",
     ghost: "text-foreground hover:text-primary",
   } as const;

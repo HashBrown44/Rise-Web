@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils";
 
 const PACKAGE_OPTIONS: { value: LeadFormValues["package"]; label: string }[] = [
   { value: "full-ownership", label: "Full Ownership — $799" },
-  { value: "growth-plan", label: "Growth Plan — $399 + $49.99/mo" },
+  { value: "growth-plan", label: "Growth Plan — $499 + $99.99/mo" },
   { value: "not-sure", label: "Not Sure Yet" },
 ];
 
@@ -80,9 +80,9 @@ export function SignupForm() {
             <div className="pointer-events-none absolute -top-24 right-0 h-64 w-64 rounded-full bg-primary/15 blur-[100px]" />
 
             <SectionHeading
-              eyebrow="Start Your Project"
-              title="Tell us about your business."
-              description="Fill this out and we'll follow up within one business day with next steps."
+              eyebrow="Ready When You Are"
+              title="Let's build your website."
+              description="Tell us about your business and we'll follow up within one business day with next steps."
               align="left"
               className="mb-10"
             />

@@ -14,7 +14,7 @@ export function FAQ() {
   return (
     <section id="faq" className="relative px-4 py-28 sm:px-8">
       <div className="mx-auto flex max-w-3xl flex-col gap-16">
-        <SectionHeading eyebrow="FAQ" title="Questions, answered." description="Everything you need to know before getting started." />
+        <SectionHeading eyebrow="Questions" title="Good to know." description="Everything you need to know before getting started." />
 
         <div className="flex flex-col gap-4">
           {FAQS.map((faq, index) => {

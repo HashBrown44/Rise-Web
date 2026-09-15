@@ -32,7 +32,7 @@ export function Navbar() {
         className={cn(
           "flex w-full max-w-6xl items-center justify-between rounded-full border px-5 py-3 transition-all duration-500",
           scrolled
-            ? "glass border-white/10 shadow-[0_8px_40px_-15px_rgba(0,229,255,0.25)]"
+            ? "glass border-white/10 shadow-[0_8px_40px_-15px_rgba(47,93,255,0.25)]"
             : "border-transparent bg-transparent",
         )}
       >
@@ -48,7 +48,7 @@ export function Navbar() {
               key={link.href}
               href={link.href}
               data-cursor-hover
-              className="text-sm font-medium text-muted transition-colors hover:text-foreground"
+              className="label-mono text-xs font-medium text-muted transition-colors hover:text-foreground"
             >
               {link.label}
             </a>
@@ -97,7 +97,7 @@ export function Navbar() {
             <a
               href="#pricing"
               onClick={() => setOpen(false)}
-              className="mt-2 rounded-xl bg-gradient-to-r from-primary to-highlight px-4 py-3 text-center text-base font-semibold text-background"
+              className="mt-2 rounded-xl bg-gradient-to-r from-primary to-secondary px-4 py-3 text-center text-base font-semibold text-foreground"
             >
               Get Started
             </a>

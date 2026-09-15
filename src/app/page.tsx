@@ -1,12 +1,13 @@
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { Hero } from "@/components/sections/hero";
-import { WebsiteZoomReveal } from "@/components/sections/website-zoom-reveal";
+import { FeatureStory } from "@/components/sections/feature-story";
 import { WhyChooseUs } from "@/components/sections/why-choose-us";
 import { AboutUs } from "@/components/sections/about-us";
+import { StatsBar } from "@/components/sections/stats-bar";
 import { Pricing } from "@/components/sections/pricing";
-import { SignupForm } from "@/components/sections/signup-form";
 import { FAQ } from "@/components/sections/faq";
+import { SignupForm } from "@/components/sections/signup-form";
 import { PaymentReturnBanner } from "@/components/checkout/payment-return-banner";
 
 export default function Home() {
@@ -14,14 +15,15 @@ export default function Home() {
     <>
       <PaymentReturnBanner />
       <Navbar />
-      <main className="flex flex-1 flex-col">
+      <main className="flex-1">
         <Hero />
-        <WebsiteZoomReveal />
+        <FeatureStory />
         <WhyChooseUs />
         <AboutUs />
+        <StatsBar />
         <Pricing />
-        <SignupForm />
         <FAQ />
+        <SignupForm />
       </main>
       <Footer />
     </>

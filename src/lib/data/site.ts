@@ -11,5 +11,5 @@ export const SITE = {
   tagline: "Websites Built To Grow Your Business.",
   email: "trevyn.desmond@icloud.com",
   phone: "(860) 510-1266",
-  url: "https://risewebsites.com",
+  url: "https://risewebsite.com",
 };

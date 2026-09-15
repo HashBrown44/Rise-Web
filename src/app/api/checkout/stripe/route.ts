@@ -6,8 +6,8 @@ import { PAYMENT_METHODS } from "@/lib/data/payment-methods";
 
 const AMOUNTS = {
   "full-ownership": 79900, // $799.00 one-time
-  "growth-setup": 39900, // $399.00 one-time
-  "growth-monthly": 4999, // $49.99 / month
+  "growth-setup": 49900, // $499.00 one-time
+  "growth-monthly": 9999, // $99.99 / month
 } as const;
 
 let growthSetupProductId: string | null = null;
