@@ -31,7 +31,8 @@ export async function POST(request: Request) {
     case "invoice.paid": {
       const invoice = event.data.object;
       // TODO: mark the "Growth Plan" subscription's invoice as paid — first invoice
-      // covers the $499 setup fee + first month; later ones are the $99.99/mo charge.
+      // is just the $500 setup fee; the recurring $100/mo charge doesn't start
+      // until one month later (see billing_cycle_anchor in api/checkout/stripe).
       const subscriptionId = invoice.parent?.subscription_details?.subscription;
       console.log("[webhook] invoice paid", invoice.id, subscriptionId);
       break;

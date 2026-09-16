@@ -4,7 +4,7 @@ import { leadFormSchema, type LeadFormValues } from "@/lib/schemas";
 
 const PACKAGE_LABELS: Record<LeadFormValues["package"], string> = {
   "full-ownership": "Full Ownership — $799",
-  "growth-plan": "Growth Plan — $499 + $99.99/mo",
+  "growth-plan": "Growth Plan — $500 + $100/mo",
   "not-sure": "Not sure yet",
 };
 

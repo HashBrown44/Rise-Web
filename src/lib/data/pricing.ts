@@ -31,9 +31,10 @@ export const PRICING_PLANS: PricingPlan[] = [
   {
     id: "growth-plan",
     name: "Growth Plan",
-    price: "$499 + $99.99",
-    priceSuffix: "one-time + /month",
-    description: "For businesses that want their site actively maintained, updated, and improved every month.",
+    price: "$500 + $100",
+    priceSuffix: "today, then /month",
+    description:
+      "For businesses that want their site actively maintained, updated, and improved every month. $500 due today, then $100/month starting one month from checkout.",
     features: [
       "Custom Website",
       "Full Ownership",
