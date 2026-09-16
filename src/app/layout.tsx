@@ -46,6 +46,9 @@ export const metadata: Metadata = {
       "High-converting, premium websites for local businesses. Custom design, SEO foundations, and ongoing support.",
     type: "website",
   },
+  verification: {
+    google: "1_bGZct-sh_3lVxHcUfPS1ExZ6VgsoAz8zG4J8O6mZM",
+  },
 };
 
 export default function RootLayout({
