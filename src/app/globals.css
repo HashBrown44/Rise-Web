@@ -11,8 +11,8 @@
   --color-muted: var(--muted);
   --color-border: var(--border);
 
-  --font-heading: var(--font-fraunces);
-  --font-body: var(--font-inter);
+  --font-heading: var(--font-italiana);
+  --font-body: var(--font-sora);
   --font-mono: var(--font-plex-mono);
 
   --animate-float: float 8s ease-in-out infinite;
@@ -24,23 +24,25 @@
 }
 
 :root {
-  --background: #08080f;
-  --surface: #100f1c;
-  --surface-2: #181628;
-  --surface-rgb: 16 15 28;
-  --primary: #2f5dff;
-  --secondary: #1b2c82;
-  --highlight: #c7cdd1;
-  --foreground: #f2efe9;
-  --muted: #938f87;
-  --border: rgba(242, 239, 233, 0.1);
+  --background: #0a0c0b;
+  --surface: #111513;
+  --surface-2: #17201b;
+  --surface-rgb: 17 21 19;
+  --primary: #d8b862;
+  --secondary: #0f3d27;
+  --highlight: #f0d891;
+  --foreground: #efeadf;
+  --muted: #9c968a;
+  --border: rgba(239, 234, 223, 0.1);
 
-  /* Decorative-only nebula palette — used solely by atmospheric background
-     effects (star-field glow, nebula-cloud blobs). Never used for UI/text. */
-  --nebula-blue: #3f6fe0;
-  --nebula-violet: #7c5cff;
-  --nebula-magenta: #cf4f96;
-  --nebula-amber: #e8a35c;
+  /* Decorative-only atmosphere palette — used solely by background effects
+     (star-field glow, nebula-cloud blobs). Never used for UI/text. The
+     names are historical: the "Monaco Night" theme maps them to racing
+     greens and golds. */
+  --nebula-blue: #1f6b47;
+  --nebula-violet: #b8933f;
+  --nebula-magenta: #0f3d27;
+  --nebula-amber: #e8c978;
 }
 
 @keyframes float {
@@ -107,11 +109,14 @@ h4,
 h5,
 h6 {
   font-family: var(--font-heading), var(--font-body), sans-serif;
+  /* Italiana ships a single weight; never fake-bold it. */
+  font-weight: 400;
+  font-synthesis: none;
 }
 
 ::selection {
   background: var(--primary);
-  color: var(--foreground);
+  color: var(--background);
 }
 
 ::-webkit-scrollbar {
@@ -128,7 +133,7 @@ h6 {
 }
 
 .text-gradient {
-  background: linear-gradient(90deg, var(--primary), var(--highlight) 45%, var(--secondary));
+  background: linear-gradient(90deg, var(--primary), var(--highlight) 45%, var(--primary));
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
@@ -165,15 +170,15 @@ h6 {
 }
 
 /* Soft, irregular, multi-tonal cloud — an alternative to a flat single-hue
-   blurred circle. Layered offset ellipses blending blue -> violet -> magenta
-   with a touch of warm amber, like real nebula photography. Apply to any
+   blurred circle. Layered offset ellipses blending racing green -> gold ->
+   deep green with a touch of champagne. Apply to any
    sized/positioned element; this only sets background + blur. */
 .nebula-cloud {
   background:
-    radial-gradient(ellipse 60% 50% at 30% 35%, rgb(63 111 224 / 0.35), transparent 65%),
-    radial-gradient(ellipse 55% 60% at 72% 42%, rgb(124 92 255 / 0.3), transparent 68%),
-    radial-gradient(ellipse 50% 45% at 55% 72%, rgb(207 79 150 / 0.22), transparent 70%),
-    radial-gradient(ellipse 42% 40% at 38% 80%, rgb(232 163 92 / 0.12), transparent 72%);
+    radial-gradient(ellipse 60% 50% at 30% 35%, rgb(31 107 71 / 0.35), transparent 65%),
+    radial-gradient(ellipse 55% 60% at 72% 42%, rgb(184 147 63 / 0.18), transparent 68%),
+    radial-gradient(ellipse 50% 45% at 55% 72%, rgb(15 61 39 / 0.4), transparent 70%),
+    radial-gradient(ellipse 42% 40% at 38% 80%, rgb(232 201 120 / 0.1), transparent 72%);
   filter: blur(50px);
 }
 

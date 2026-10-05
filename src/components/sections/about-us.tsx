@@ -23,7 +23,7 @@ export function AboutUs() {
           {FOUNDERS.map((founder, index) => (
             <Reveal key={founder.name} delay={index * 0.12}>
               <div className="flex flex-col items-center gap-4 text-center">
-                <div className="relative h-36 w-36 overflow-hidden rounded-full border border-white/10 shadow-[0_0_60px_-15px_rgba(47,93,255,0.5)] sm:h-44 sm:w-44">
+                <div className="relative h-36 w-36 overflow-hidden rounded-full border border-white/10 shadow-[0_0_60px_-15px_rgba(216,184,98,0.5)] sm:h-44 sm:w-44">
                   <Image
                     src={founder.photo}
                     alt={founder.name}

@@ -23,18 +23,18 @@ import { cn } from "@/lib/utils";
 const APPEARANCE: StripeElementsOptions["appearance"] = {
   theme: "night",
   variables: {
-    colorPrimary: "#2f5dff",
-    colorBackground: "#131417",
-    colorText: "#f2efe9",
-    colorTextSecondary: "#938f87",
+    colorPrimary: "#d8b862",
+    colorBackground: "#111513",
+    colorText: "#efeadf",
+    colorTextSecondary: "#9c968a",
     colorDanger: "#f87171",
-    fontFamily: "var(--font-inter), ui-sans-serif, system-ui, sans-serif",
+    fontFamily: "var(--font-sora), ui-sans-serif, system-ui, sans-serif",
     borderRadius: "12px",
     spacingUnit: "4px",
   },
   rules: {
     ".Input": {
-      border: "1px solid rgba(242, 239, 233, 0.1)",
+      border: "1px solid rgba(239, 234, 223, 0.1)",
       backgroundColor: "rgba(255, 255, 255, 0.03)",
     },
     ".Input:focus": {

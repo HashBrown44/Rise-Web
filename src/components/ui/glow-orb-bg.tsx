@@ -42,9 +42,9 @@ export function GlowOrbBg() {
         className="h-[560px] w-[560px] rounded-full will-change-transform"
         style={{
           background: [
-            "radial-gradient(ellipse 55% 50% at 32% 38%, rgba(63,111,224,0.4), transparent 65%)",
-            "radial-gradient(ellipse 50% 55% at 68% 42%, rgba(124,92,255,0.34), transparent 68%)",
-            "radial-gradient(ellipse 45% 42% at 52% 68%, rgba(207,79,150,0.24), transparent 70%)",
+            "radial-gradient(ellipse 55% 50% at 32% 38%, rgba(31,107,71,0.42), transparent 65%)",
+            "radial-gradient(ellipse 50% 55% at 68% 42%, rgba(184,147,63,0.22), transparent 68%)",
+            "radial-gradient(ellipse 45% 42% at 52% 68%, rgba(15,61,39,0.45), transparent 70%)",
           ].join(", "),
           filter: "blur(42px)",
         }}

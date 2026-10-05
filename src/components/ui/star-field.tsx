@@ -22,8 +22,8 @@ type ShootingStar = {
   maxLife: number;
 };
 
-const WHITE = "247, 248, 255";
-const AMBER = "232, 179, 122";
+const WHITE = "245, 240, 226";
+const AMBER = "216, 184, 98";
 
 export function StarField({ density = 140 }: { density?: number }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
