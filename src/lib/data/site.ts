@@ -9,7 +9,7 @@ export const SITE = {
   name: "Rise Websites",
   shortName: "Rise Web",
   tagline: "Websites Built To Grow Your Business.",
-  email: "trevyn.desmond@icloud.com",
+  email: "info@risewebsite.com",
   phone: "(860) 510-1266",
   url: "https://risewebsite.com",
 };
