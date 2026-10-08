@@ -74,12 +74,12 @@ function PricingCard({ plan }: { plan: (typeof PRICING_PLANS)[number] }) {
         className={cn(
           "relative flex h-full flex-col gap-8 overflow-hidden rounded-3xl border p-8 sm:p-10",
           plan.featured
-            ? "border-primary/40 bg-gradient-to-b from-surface to-surface-2 shadow-[0_0_80px_-20px_rgba(47,93,255,0.35)]"
+            ? "border-primary/40 bg-gradient-to-b from-surface to-surface-2 shadow-[0_0_80px_-20px_rgba(216,184,98,0.35)]"
             : "border-white/10 bg-surface/60",
         )}
       >
         {plan.featured && (
-          <span className="label-mono absolute right-8 top-8 rounded-full bg-gradient-to-r from-primary to-secondary px-4 py-1 text-xs font-semibold text-foreground">
+          <span className="label-mono absolute right-8 top-8 rounded-full bg-primary px-4 py-1 text-xs font-semibold text-background">
             Most Popular
           </span>
         )}

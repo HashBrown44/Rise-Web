@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter, IBM_Plex_Mono } from "next/font/google";
+import { Italiana, Sora, IBM_Plex_Mono } from "next/font/google";
 import { CustomCursor } from "@/components/ui/cursor";
 import { LoadingScreen } from "@/components/ui/loading-screen";
 import { FloatingWidget } from "@/components/ui/floating-widget";
 import "./globals.css";
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const italiana = Italiana({
+  variable: "--font-italiana",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: "400",
   display: "swap",
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const sora = Sora({
+  variable: "--font-sora",
   subsets: ["latin"],
   display: "swap",
 });
@@ -59,7 +59,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${inter.variable} ${plexMono.variable} h-full antialiased`}
+      className={`${italiana.variable} ${sora.variable} ${plexMono.variable} h-full antialiased`}
     >
       <body className="grain min-h-full flex flex-col bg-background text-foreground selection:bg-primary">
         <LoadingScreen />

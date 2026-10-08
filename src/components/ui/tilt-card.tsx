@@ -47,7 +47,7 @@ export function TiltCard({ children, className, maxTilt = 8 }: TiltCardProps) {
     mouseY.set(-9999);
   };
 
-  const sheen = useMotionTemplate`radial-gradient(320px circle at ${sheenX}px ${sheenY}px, rgba(199,205,209,0.14), transparent 60%)`;
+  const sheen = useMotionTemplate`radial-gradient(320px circle at ${sheenX}px ${sheenY}px, rgba(240,216,145,0.1), transparent 60%)`;
 
   return (
     <div style={{ perspective: 1200 }} className={className}>

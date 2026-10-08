@@ -31,7 +31,7 @@ export function Hero() {
     return () => window.removeEventListener("mousemove", handleMove);
   }, [mouseX, mouseY]);
 
-  const lightBackground = useMotionTemplate`radial-gradient(700px circle at ${smoothX}px ${smoothY}px, rgba(124,92,255,0.12), transparent 60%)`;
+  const lightBackground = useMotionTemplate`radial-gradient(700px circle at ${smoothX}px ${smoothY}px, rgba(216,184,98,0.08), transparent 60%)`;
 
   return (
     <section
@@ -57,7 +57,7 @@ export function Hero() {
           Premium Web Design Agency
         </motion.span>
 
-        <h1 className="font-[family-name:var(--font-heading)] text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl 2xl:text-7xl">
+        <h1 className="font-[family-name:var(--font-heading)] text-4xl uppercase leading-[1.02] sm:text-5xl lg:text-7xl 2xl:text-8xl">
           {HEADLINE_LINES.map((line, lineIndex) => (
             <span key={line} className="block overflow-hidden pb-1">
               <motion.span
