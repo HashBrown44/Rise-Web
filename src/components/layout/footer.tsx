@@ -36,7 +36,7 @@ export function Footer() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <h4 className="label-mono text-xs font-semibold text-foreground">Site</h4>
+            <h2 className="label-mono text-xs font-semibold text-foreground">Site</h2>
             {NAV_LINKS.map((link) => (
               <a key={link.href} href={link.href} className="text-sm text-muted transition-colors hover:text-primary">
                 {link.label}
@@ -45,7 +45,7 @@ export function Footer() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <h4 className="label-mono text-xs font-semibold text-foreground">Contact</h4>
+            <h2 className="label-mono text-xs font-semibold text-foreground">Contact</h2>
             <a href={`mailto:${SITE.email}`} className="text-sm text-muted transition-colors hover:text-primary">
               {SITE.email}
             </a>

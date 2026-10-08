@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { AnimatePresence, motion } from "framer-motion";
@@ -117,7 +118,9 @@ export function CheckoutModal({ open, onClose, plan, planLabel, amountLabel }: C
     }
   };
 
-  return (
+  // Rendered into <body>: the modal opens from inside a tilting (transformed)
+  // pricing card, which would otherwise trap position:fixed inside the card.
+  return createPortal(
     <AnimatePresence>
       {open && (
         <motion.div
@@ -184,7 +187,8 @@ export function CheckoutModal({ open, onClose, plan, planLabel, amountLabel }: C
           </motion.div>
         </motion.div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body,
   );
 }
 

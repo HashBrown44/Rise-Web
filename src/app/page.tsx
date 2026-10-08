@@ -9,10 +9,23 @@ import { Pricing } from "@/components/sections/pricing";
 import { FAQ } from "@/components/sections/faq";
 import { SignupForm } from "@/components/sections/signup-form";
 import { PaymentReturnBanner } from "@/components/checkout/payment-return-banner";
+import { JsonLd } from "@/components/seo/json-ld";
+import { pageMetadata } from "@/lib/seo";
+import { homePageGraph } from "@/lib/structured-data";
+
+const HOME_SEO = {
+  path: "/",
+  title: "Rise Websites — Websites Built To Grow Your Business",
+  description:
+    "Custom, high-converting websites for local businesses. Launch in 2–4 weeks with mobile-first design, an SEO foundation and full ownership from $799.",
+};
+
+export const metadata = pageMetadata({ ...HOME_SEO, absoluteTitle: true });
 
 export default function Home() {
   return (
     <>
+      <JsonLd data={homePageGraph(HOME_SEO)} />
       <PaymentReturnBanner />
       <Navbar />
       <main className="flex-1">

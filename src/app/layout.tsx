@@ -3,6 +3,8 @@ import { Italiana, Sora, IBM_Plex_Mono } from "next/font/google";
 import { CustomCursor } from "@/components/ui/cursor";
 import { LoadingScreen } from "@/components/ui/loading-screen";
 import { FloatingWidget } from "@/components/ui/floating-widget";
+import { SITE } from "@/lib/data/site";
+import { IS_PRODUCTION_DEPLOY, SITE_URL } from "@/lib/seo";
 import "./globals.css";
 
 const italiana = Italiana({
@@ -26,26 +28,28 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://risewebsite.com"),
+  metadataBase: new URL(SITE_URL),
+  // Fallbacks only: every page exports its own title, description and
+  // canonical via pageMetadata() in src/lib/seo.ts.
   title: {
     default: "Rise Websites — Websites Built To Grow Your Business",
     template: "%s | Rise Websites",
   },
   description:
     "Rise Websites designs and builds high-converting, premium websites for local businesses. Custom design, SEO foundations, and ongoing support with no surprises.",
-  keywords: [
-    "web design agency",
-    "website design",
-    "local business websites",
-    "custom web development",
-    "SEO optimization",
-  ],
+  applicationName: SITE.name,
   openGraph: {
-    title: "Rise Websites — Websites Built To Grow Your Business",
-    description:
-      "High-converting, premium websites for local businesses. Custom design, SEO foundations, and ongoing support.",
     type: "website",
+    siteName: SITE.name,
+    locale: "en_US",
   },
+  twitter: {
+    card: "summary_large_image",
+  },
+  // Preview/staging deploys are never indexed (robots.txt blocks them too).
+  robots: IS_PRODUCTION_DEPLOY
+    ? { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large" } }
+    : { index: false, follow: false },
   verification: {
     google: "1_bGZct-sh_3lVxHcUfPS1ExZ6VgsoAz8zG4J8O6mZM",
   },
