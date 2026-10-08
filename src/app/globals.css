@@ -109,9 +109,11 @@ h4,
 h5,
 h6 {
   font-family: var(--font-heading), var(--font-body), sans-serif;
-  /* Italiana ships a single weight; never fake-bold it. */
+  /* Italiana ships a single weight; never fake-bold it. A thin stroke in the
+     text's own colour (scaled to the font size) gives it a touch more body. */
   font-weight: 400;
   font-synthesis: none;
+  -webkit-text-stroke: 0.018em currentColor;
 }
 
 ::selection {
@@ -138,6 +140,8 @@ h6 {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  /* currentColor is transparent here, so stroke heading weight in gold. */
+  -webkit-text-stroke-color: var(--primary);
   animation: gradient-shift 6s ease infinite;
 }
 
