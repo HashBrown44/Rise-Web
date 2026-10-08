@@ -50,7 +50,7 @@ export function Hero() {
         <motion.span
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.9, duration: 0.6 }}
+          transition={{ delay: 1.1, duration: 0.6 }}
           className="label-mono inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-semibold text-highlight"
         >
           <Sparkles className="h-3.5 w-3.5" />
@@ -59,19 +59,14 @@ export function Hero() {
 
         <h1 className="font-[family-name:var(--font-heading)] text-4xl uppercase leading-[1.02] sm:text-5xl lg:text-7xl 2xl:text-8xl">
           {HEADLINE_LINES.map((line, lineIndex) => (
-            <span key={line} className="block overflow-hidden pb-1">
-              <motion.span
-                className={cn("inline-block", lineIndex === 1 && "text-gradient")}
-                initial={{ y: "110%" }}
-                animate={{ y: "0%" }}
-                transition={{
-                  delay: 2.0 + lineIndex * 0.15,
-                  duration: 0.9,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-              >
-                {line}
-              </motion.span>
+            // CSS (not JS) animation: the headline is the page's LCP element, so
+            // it must paint on first render rather than wait for hydration.
+            <span
+              key={line}
+              className="hero-line block pb-1"
+              style={{ animationDelay: `${1.2 + lineIndex * 0.15}s` }}
+            >
+              <span className={cn("inline-block", lineIndex === 1 && "text-gradient")}>{line}</span>
             </span>
           ))}
         </h1>
@@ -79,7 +74,7 @@ export function Hero() {
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 2.5, duration: 0.7 }}
+          transition={{ delay: 1.7, duration: 0.7 }}
           className="max-w-xl text-balance text-lg leading-relaxed text-muted sm:text-xl"
         >
           Rise Websites creates high-converting websites that help businesses stand out, attract more customers, and generate more leads.
@@ -88,7 +83,7 @@ export function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 2.7, duration: 0.7 }}
+          transition={{ delay: 1.9, duration: 0.7 }}
           className="flex flex-col gap-4 sm:flex-row"
         >
           <MagneticButton href="#pricing">
@@ -104,7 +99,7 @@ export function Hero() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 3, duration: 0.8 }}
+          transition={{ delay: 2.2, duration: 0.8 }}
           className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4"
         >
           {TRUST_ITEMS.map((item) => (
@@ -123,7 +118,7 @@ export function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 3.2, duration: 1 }}
+        transition={{ delay: 2.4, duration: 1 }}
         className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-xs uppercase tracking-[0.3em] text-muted sm:flex"
       >
         Scroll

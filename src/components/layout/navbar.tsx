@@ -28,7 +28,7 @@ export function Navbar() {
       <motion.div
         initial={{ y: -40, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, delay: 1.6, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.6, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className={cn(
           "flex w-full max-w-6xl items-center justify-between rounded-full border px-5 py-3 transition-all duration-500",
           scrolled
@@ -37,7 +37,7 @@ export function Navbar() {
         )}
       >
         <a href="#top" data-cursor-hover className="flex items-center gap-2 font-[family-name:var(--font-heading)] text-lg font-semibold">
-          <Image src="/rise-logo-mark.png" alt="" width={700} height={435} priority className="h-8 w-auto" />
+          <Image src="/rise-logo-mark.png" alt="" width={700} height={435} loading="eager" className="h-8 w-auto" />
           {SITE.shortName}
           <span className="text-primary">.</span>
         </a>

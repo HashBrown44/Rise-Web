@@ -8,10 +8,16 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 import { TiltCard } from "@/components/ui/tilt-card";
-import { CheckoutModal } from "@/components/checkout/checkout-modal";
+import dynamic from "next/dynamic";
 import { PricingParallaxBg } from "@/components/sections/pricing-parallax-bg";
 import { PRICING_PLANS } from "@/lib/data/pricing";
 import { cn } from "@/lib/utils";
+
+// Checkout (and Stripe) is only downloaded once a visitor opens it.
+const CheckoutModal = dynamic(
+  () => import("@/components/checkout/checkout-modal").then((m) => m.CheckoutModal),
+  { ssr: false },
+);
 
 export function Pricing() {
   const gridRef = useRef<HTMLDivElement>(null);
@@ -67,6 +73,11 @@ export function Pricing() {
 
 function PricingCard({ plan }: { plan: (typeof PRICING_PLANS)[number] }) {
   const [checkoutOpen, setCheckoutOpen] = useState(false);
+  const [checkoutRequested, setCheckoutRequested] = useState(false);
+  const openCheckout = () => {
+    setCheckoutRequested(true);
+    setCheckoutOpen(true);
+  };
 
   return (
     <TiltCard className="h-full">
@@ -117,7 +128,7 @@ function PricingCard({ plan }: { plan: (typeof PRICING_PLANS)[number] }) {
           </MagneticButton>
 
           <button
-            onClick={() => setCheckoutOpen(true)}
+            onClick={openCheckout}
             data-cursor-hover
             className="flex items-center justify-center gap-2 rounded-full border border-white/10 px-4 py-3 text-xs font-semibold text-muted transition-colors hover:border-primary/40 hover:text-foreground"
           >
@@ -126,13 +137,15 @@ function PricingCard({ plan }: { plan: (typeof PRICING_PLANS)[number] }) {
           </button>
         </div>
 
-        <CheckoutModal
-          open={checkoutOpen}
-          onClose={() => setCheckoutOpen(false)}
-          plan={plan.id}
-          planLabel={plan.name}
-          amountLabel={`${plan.price} ${plan.priceSuffix}`}
-        />
+        {checkoutRequested && (
+          <CheckoutModal
+            open={checkoutOpen}
+            onClose={() => setCheckoutOpen(false)}
+            plan={plan.id}
+            planLabel={plan.name}
+            amountLabel={`${plan.price} ${plan.priceSuffix}`}
+          />
+        )}
       </div>
     </TiltCard>
   );

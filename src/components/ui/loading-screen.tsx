@@ -11,7 +11,7 @@ export function LoadingScreen() {
     const timer = setTimeout(() => {
       setIsLoading(false);
       document.body.style.overflow = "";
-    }, 1600);
+    }, 900);
     return () => clearTimeout(timer);
   }, []);
 
@@ -47,7 +47,7 @@ export function LoadingScreen() {
                 className="h-full w-full bg-gradient-to-r from-primary via-highlight to-secondary"
                 initial={{ x: "-100%" }}
                 animate={{ x: "0%" }}
-                transition={{ duration: 1.1, ease: [0.65, 0, 0.35, 1] }}
+                transition={{ duration: 0.8, ease: [0.65, 0, 0.35, 1] }}
               />
             </motion.div>
           </div>

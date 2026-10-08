@@ -31,7 +31,7 @@ export function HeroQuoteForm() {
     <motion.form
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 2.9, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ delay: 2.1, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       onSubmit={handleSubmit}
       noValidate
       className="glass mx-auto flex w-full max-w-2xl flex-col gap-4 rounded-2xl border border-white/10 p-5 sm:flex-row sm:items-start sm:gap-3 sm:p-3"

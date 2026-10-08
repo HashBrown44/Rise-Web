@@ -10,7 +10,7 @@ export function FloatingWidget() {
   const [dismissed, setDismissed] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setVisible(true), 3400);
+    const timer = setTimeout(() => setVisible(true), 2600);
     return () => clearTimeout(timer);
   }, []);
 
@@ -34,9 +34,9 @@ export function FloatingWidget() {
           </button>
 
           <span className="label-mono text-[11px] font-semibold text-highlight">Free, No Pressure</span>
-          <h4 className="mt-2 font-[family-name:var(--font-heading)] text-lg font-semibold leading-snug">
+          <p className="mt-2 font-[family-name:var(--font-heading)] text-lg leading-snug [font-synthesis:none] [-webkit-text-stroke:0.018em_currentColor]">
             Ready to grow your business?
-          </h4>
+          </p>
           <p className="mt-2 text-sm leading-relaxed text-muted">
             Tell us about your project and we&apos;ll get back to you within one business day.
           </p>

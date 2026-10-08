@@ -145,6 +145,24 @@ h6 {
   animation: gradient-shift 6s ease infinite;
 }
 
+/* Hero headline reveal. Starts at a near-zero (not zero) opacity so the
+   browser counts the headline as painted immediately for LCP, then rises in
+   once the intro screen lifts. */
+.hero-line {
+  animation: hero-line-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes hero-line-in {
+  from {
+    opacity: 0.01;
+    transform: translate3d(0, 0.45em, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 .grain::before {
   content: "";
   position: fixed;
